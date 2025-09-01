@@ -2,9 +2,9 @@ pandas
 numpy
 requests
 python-dotenv
-openpyxl
-matplotlib
-statsmodels
-beautifulsoup4
 pdfplumber
 lxml
+matplotlib
+statsmodels
+openpyxl
+jupter

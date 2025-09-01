@@ -14,4 +14,5 @@ venv/
 .env.*
 
 # Data (keep raw out of Git)
-Projects/kbeauty-device-brief/data/raw/
+Projects/kbeauty-device-brief/data/raw/**/*.pdf
+Projects/kbeauty-device-brief/data/raw/**/*.zip

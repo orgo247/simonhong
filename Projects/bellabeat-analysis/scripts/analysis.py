@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # Pandas ETL to create a cleaned daily dataset with derived metrics (TotalActiveMinutes, SleepEfficiency).
 # Steps: load CSVs, normalize schemas, dedupe, parse dates, merge daily + sleep.
 

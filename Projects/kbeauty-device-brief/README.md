@@ -1,44 +1,126 @@
-# K-Beauty Home-Device: Why Is Performance Declining at Jion Meditech?
+# K‑Beauty Home Device – Jion Meditech Analysis (Portfolio Project)
 
-## What this project does
-A consulting-style, **data-science** analysis that explains *why* performance is declining at Jion Meditech (brand: DualSonic), by reading the story **across financial statements** (P/L, B/S, C/F) and benchmarking to listed leaders (**APR 278470, Amorepacific 090430, LG H&H 051900**).
+Diagnose **why Jion Meditech’s performance deteriorated despite sales growth** and benchmark its KPIs versus industry leaders. This repo mimics a consulting analyst task executed with a **data‑science** workflow: data ingestion → cleaning → KPI construction → peer benchmarking → brief.
 
-- **Data collection (OpenDART peers):** corporation code (corpCode) + standardized XBRL statements (single-company full statements API).  
-- **Target firm (지온메디텍):** public web pages and credit/company info pages for qualitative/limited quantitative context if DART/XBRL data are unavailable.  
-- **Why inventory matters:** under **IAS 2**, inventories are measured at the **lower of cost and NRV**; rising DIO and “inventory write-downs” indicate demand/obsolescence risk and hit margins/cash.  
-- **Deliverables:** Excel peer table, diagnostic plots, a 2-page executive brief.
+---
 
-Sources: OpenDART corpCode & financials, DART search portal, DualSonic brand pages, IAS 2. 
-(Refs: OpenDART corpCode & single-firm statements; DART search; DualSonic site; IAS 2 inventory.) 
+## 1) What this project shows (skills)
+- **Business framing → KPIs:** Translate business questions into measurable KPIs (Op margin, Ad/Sales, CFO margin, Current ratio, D/E, inventory & valuation losses).
+- **Data engineering with pandas/numpy:** Normalize heterogeneous statements (IS/BS/CF), long↔wide reshaping, canonical account mapping, robust ratio math.
+- **External data retrieval:** Pull 5‑year peer financials via **OpenDART** and standardize.
+- **Analytic storytelling:** Compare Jion vs peer averages (leaders), show trend lines, and turn signals into decisions (inventory, ad ROI, liquidity).
+- **Reproducible pipeline:** Clear `src/` scripts, deterministic outputs in `data/processed/`, deliverables `reports/`.
 
-## Business question (framed)
-**Why is performance deteriorating at Jion Meditech?**  
-We test hypotheses that typically show up together:
-1) Revenue up, but **operating-margin improvement decelerates**.  
-2) **Advertising & promotion ratio** spikes (push marketing to clear stock).  
-3) **Inventories and DIO** trend up; **inventory write-downs**/allowances appear.  
-4) **Cash conversion** weak (CFO margin falls vs. EBIT).  
-5) **Debt/Equity up**, **interest coverage down** (financing the working-capital gap).
 
-## Data & scope
-- **Peers (OpenDART APIs):** APR (278470), Amorepacific (090430), LG H&H (051900).  
-- **Target firm:** Jion Meditech — brand: DualSonic (home-beauty devices). Public sources confirm brand/operator identity and company profile pages.  
-- **Horizon:** last 5 fiscal years, quarterly & LTM views.
+- **Python**: pandas, numpy, matplotlib, python‑dotenv, requests.
+- **Data**: OpenDART (peers), provided Excel (Jion).
+- **Execution**: CLI scripts under `src/`, deterministic outputs in `data/processed/`.
+---
 
-## Methods (DS workflow)
-1) **ETL:** requests-based client for OpenDART (corpCode zip → parse → statements API).  
-2) **Cleaning:** IFRS account normalization; KR/EN labels; currency units; period alignment.  
-3) **KPIs:** Revenue growth/CAGR, Gross/Operating margins, SG&A%, Ad ratio (if present), Inventories & DIO, CFO margin, Debt/Equity, Interest coverage.  
-4) **Diagnostics:**  
-   - ΔOp% on ΔDIO / ΔAdRatio / ΔRevYoY with company fixed effects (interpretable panel).  
-   - Event view: quarters with top-quintile Ad ratio and next-quarter Op% change.  
-5) **Visualization:** margin trends, DIO vs. CFO margin, Ad ratio vs. Revenue growth, D/E & coverage.  
-6) **Brief:** 2 pages with findings + actions (inventory discipline, promo ROI gating, channel/price mix).
+## 2) Repository structure
 
-## Repro (quick)
-1) Add `.env` at repo root with `DART_API_KEY=xxxxx`.  
-2) Run notebooks in order (once code stubs are added):  
-   01_dart_pull → 02_kpi_clean → 03_decline_diagnostics → 04_brief_plots.  
-3) Open `excel/peer_summary.xlsx` and `reports/figures/` for outputs.
+```
+kbeauty-device-brief/
+├── data/
+│   ├── raw/
+│   │   ├── jion/                # Jion files (given): Jion_IS.xlsx, Jion_BS.xlsx, Jion_CF.xlsx
+│   │   └── peers/               # OpenDART pulls cached here
+│   └── processed/               # All derived CSVs live here
+├── src/
+│   ├── 00_fetch_raw_data.py     # Fetch peers from OpenDART (2019/20–2024)
+│   ├── 01_process_raw.py        # Clean Jion → metrics_jion.csv
+│   └── 02_kpi_diagnostics.py    # KPIs, YoY, peer means, charts
+├── .env                         # DART_API_KEY=xxxxxxxx...(40 hex chars)
+├── requirements.txt
+└── reports/report.md            # Narrative brief with findings
+```
 
-*Note:* If 지온메디텍 lacks XBRL statements in OpenDART, treat its section as a qualitative deep-dive plus any public numeric snippets; keep all quantitative modeling to listed peers.
+> **Note on periods**
+> Jion’s current/prior columns are **normalized to 2023–2024**. Peers are processed for **2020–2024**; if a peer year is missing for 2024, the 2023 mean is carried forward (“2024≈2023”) and explicitly noted in the brief.
+
+---
+
+## 3) Quickstart
+
+### A) Environment
+```bash
+# from repo root
+python -m venv .venv && source .venv/bin/activate  # or conda env
+pip install -r requirements.txt
+```
+
+### B) Secrets
+Create `.env` at repo root:
+```
+DART_API_KEY=YOUR_40_CHAR_HEX_KEY #retrieved from OPEN DART
+```
+> Must be **exactly 40 hex chars** (0–9, a–f).
+
+```
+
+### C) Data (Jion given)
+Put the three files here:
+```
+data/raw/jion/Jion_IS.xlsx
+data/raw/jion/Jion_BS.xlsx
+data/raw/jion/Jion_CF.xlsx
+```
+
+### D) Run the pipeline
+```bash
+# fetch peers from OpenDART
+python src/00_fetch_raw_data.py
+
+# process Jion → metrics & wide table
+python src/01_process_raw.py
+
+# compute KPIs + peer means + charts
+python src/02_kpi_diagnostics.py
+```
+
+Outputs:
+- `data/processed/metrics_jion.csv` – Jion KPIs (2023–2024)
+- `data/processed/jion_summary.csv` – Jion YoY deltas
+- `data/processed/metrics_peers.csv` – Peer KPIs panel
+- `data/processed/peer_avg_by_year.csv` – Peer **yearly means** (leaders, 2020–2024)
+- `data/processed/jion_vs_peer.csv` / `jion_vs_peer_avg.csv` – Comparison tables
+- Figures in `reports/figures/` and `reports/figures_peer_trend/`
+- Narrative: `reports/report.md`
+
+---
+
+## 4) Methodology
+
+1) **Normalize statements** (IS/BS/CF): map synonymous Korean/English account names to canonical labels.
+2) **Construct KPIs** (levels & ratios):
+   - Levels: Revenue, COGS, Operating income, SG&A, Advertising, Inventories, CFO, Short‑term borrowings, Cash.
+   - Ratios: `OpMargin = OperatingIncome / Revenue`, `SGA_ratio`, `Ad_ratio`, `CFO_margin`,
+     `CurrentRatio = CurrentAssets / CurrentLiabilities`, `DebtToEquity = TotalLiabilities / TotalEquity`.
+3) **Peer mean by year**: for APR/Amorepacific/LG H&H, compute **mean** 2020–2024.
+4) **Compare Jion 2023–2024 vs peer means**: deltas and trend lines to show **direction and magnitude** of gap.
+5) **Interpretation**: tie financial signals to operations: demand forecasting → inventory → cash; promotion ROI; liquidity/leverage discipline.
+
+---
+
+## 5) Findings
+
+- **Sales ↑, COGS ↓** → gross margin improved, **but** **Operating income ↓** because **SG&A/Advertising ↑**.
+- **Inventories ↑ + valuation loss** → demand miss; **CFO margin ↓** (cash conversion weak).
+- **Current ratio thin**, **Debt‑to‑Equity high** → reliance on short‑term debt.
+- **Peer comparison (means)**: Jion’s **Ad/Sales higher** and **Op/CFO margins lower** than leaders’ trend → **promotion ROI & overhead absorption** are the pain points.
+
+See **`reports/report.md`** for details and charts.
+
+---
+
+## 6) Limitations & next steps
+
+- Peer set limited to three leaders; add more comparables if available.
+- 2024 peer gaps are explicitly documented if carried forward from 2023.
+- For causality, run **incrementality** (MMM‑lite/geo split) and **inventory liquidation experiments**; fold results into the forecast loop.
+
+---
+
+## 8) Credits
+
+Built as a learning/portfolio exercise to mimic a consulting analyst + data‑science workflow for K‑beauty home devices.

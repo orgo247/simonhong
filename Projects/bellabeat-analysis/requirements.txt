@@ -1,0 +1,10 @@
+# List of Python packages required for this project
+pandas>=1.5.0
+numpy>=1.23.0
+matplotlib>=3.5.0
+seaborn>=0.12.0
+
+## Notes
+# You may need additional packages depending on the specific visualizations
+# you create or if you choose to extend the analysis (e.g. scikit-learn for
+# predictive modeling).

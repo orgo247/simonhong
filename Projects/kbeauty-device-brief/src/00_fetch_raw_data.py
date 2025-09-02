@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # Fetch 5-year BS/IS/CF raw financials for listed peers from OpenDART and save under data/raw/peers/.
 # Requires: DART_API_KEY in environment (40 chars).
 
@@ -21,7 +20,7 @@ y = datetime.now().year
 YEARS = list(range(y-5, y))
 
 # paths (run from repo root)
-RAW_DIR = Path("Projects/kbeauty-device-brief/data/raw/peers")
+RAW_DIR = Path("data/raw/peers")
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 def get_corp_table():

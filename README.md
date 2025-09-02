@@ -1,4 +1,4 @@
-# Simon Hong 
+# Simon Hong
 
 Economics & Data Science | 🎓 MS Applied Data Science @USC
 
@@ -10,7 +10,7 @@ This repository documents my learning journey and projects as I grow into a prof
 
 ## Skills I’m Building
 
-**Programming & Tools**: Python (pandas, NumPy, matplotlib), SQL, Git, Excel, Tableau
+**Programming & Tools**: Python (pandas, NumPy, matplotlib), R, SQL, C++, Git, Excel, Tableau
 
 **Data Science**: Data cleaning, visualization, statistics, machine learning
 

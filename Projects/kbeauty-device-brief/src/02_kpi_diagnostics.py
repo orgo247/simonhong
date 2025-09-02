@@ -1,6 +1,4 @@
 """
-02_kpi_diagnostics.py
-
 Compares Jion 2023–2024 performance to peers. It reads the processed Jion
 metrics from metrics_jion.csv and, if available, processes peer raw files
 from data/raw/peers/ (or from any *_raw.csv in the project root) into KPI

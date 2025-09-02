@@ -121,6 +121,6 @@ See **`reports/report.md`** for details and charts.
 
 ---
 
-## 8) Credits
+## 7) Credits
 
 Built as a learning/portfolio exercise to mimic a consulting analyst + data‑science workflow for K‑beauty home devices.

@@ -4,14 +4,14 @@ Diagnose **why Jion Meditech’s performance deteriorated despite sales growth**
 
 ---
 
-## 1) What this project shows (skills)
+## 1) What this project shows 
 - **Business framing → KPIs:** Translate business questions into measurable KPIs (Op margin, Ad/Sales, CFO margin, Current ratio, D/E, inventory & valuation losses).
 - **Data engineering with pandas/numpy:** Normalize heterogeneous statements (IS/BS/CF), long↔wide reshaping, canonical account mapping, robust ratio math.
 - **External data retrieval:** Pull 5‑year peer financials via **OpenDART** and standardize.
 - **Analytic storytelling:** Compare Jion vs peer averages (leaders), show trend lines, and turn signals into decisions (inventory, ad ROI, liquidity).
 - **Reproducible pipeline:** Clear `src/` scripts, deterministic outputs in `data/processed/`, deliverables `reports/`.
 
-
+## Skills
 - **Python**: pandas, numpy, matplotlib, python‑dotenv, requests.
 - **Data**: OpenDART (peers), provided Excel (Jion).
 - **Execution**: CLI scripts under `src/`, deterministic outputs in `data/processed/`.

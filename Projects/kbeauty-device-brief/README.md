@@ -11,10 +11,6 @@ Diagnose **why Jion Meditech’s performance deteriorated despite sales growth**
 - **Analytic storytelling:** Compare Jion vs peer averages (leaders), show trend lines, and turn signals into decisions (inventory, ad ROI, liquidity).
 - **Reproducible pipeline:** Clear `src/` scripts, deterministic outputs in `data/processed/`, deliverables `reports/`.
 
-## Skills
-- **Python**: pandas, numpy, matplotlib, python‑dotenv, requests.
-- **Data**: OpenDART (peers), provided Excel (Jion).
-- **Execution**: CLI scripts under `src/`, deterministic outputs in `data/processed/`.
 ---
 
 ## 2) Repository structure

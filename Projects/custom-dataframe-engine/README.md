@@ -13,7 +13,7 @@ custom-dataframe-engine/
 │   └── demo.png                # Screenshot(s)
 ├── scripts/
 │   ├── app.py                  # Streamlit interactive dashboard
-│   ├── custom_engine.py   # Core DataFrame engine (backend)
+│   ├── custom_engine.py        # Core DataFrame engine (backend)
 │   └── demo.py                 # Usage examples
 ├── requirements.txt            # Dependencies
 └── README.md                   # Project documentation
@@ -56,6 +56,7 @@ The API supports both **Functional** (Chaining) and **Imperative** (In-Place) pa
 **Run the included demo script to see the engine in action:**
 
 ## How to Run
+```bash
 1. Clone repository
 git clone https://github.com/orgo247/simonhong.git
 cd simonhong/Projects/custom-dataframe-engine
@@ -63,7 +64,8 @@ cd simonhong/Projects/custom-dataframe-engine
 python3 -m venv venv
 source venv/bin/activate   # Windows: venv\\Scripts\\activate
 pip install -r requirements.txt
-3. Lanch dashboard
+3. Launch dashboard
 streamlit run scripts/app.py
 4. (Optional) Run demo script
 python scripts/demo.py
+```

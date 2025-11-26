@@ -3,9 +3,9 @@
 # Usage: python demo.py
 
 try:
-    from scripts.custom_engine import DataFrame
+    from custom_engine import DataFrame
 except ImportError:
-    from scripts.custom_engine import DataFrame
+    from custom_engine import DataFrame
 
 print("=======================================================")
 print("   CUSTOM DATAFRAME ENGINE - FUNCTIONALITY DEMO")

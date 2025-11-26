@@ -17,6 +17,7 @@ custom-dataframe-engine/
 │   └── demo.py                 # Usage examples
 ├── requirements.txt            # Dependencies
 └── README.md                   # Project documentation
+```
 
 
 ## Project Overview
@@ -56,10 +57,13 @@ The API supports both **Functional** (Chaining) and **Imperative** (In-Place) pa
 
 ## How to Run
 1. Clone repository
-git clone [https://github.com/orgo247/simonhong.git](https://github.com/orgo247/simonhong.git)
+git clone https://github.com/orgo247/simonhong.git
+cd simonhong/Projects/custom-dataframe-engine
 2. Install dependencies
+python3 -m venv venv
+source venv/bin/activate   # Windows: venv\\Scripts\\activate
 pip install -r requirements.txt
 3. Lanch dashboard
-streamlit run app.py
+streamlit run scripts/app.py
 4. (Optional) Run demo script
-python demo.py
+python scripts/demo.py

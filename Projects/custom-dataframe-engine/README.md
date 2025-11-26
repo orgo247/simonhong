@@ -13,7 +13,7 @@ custom-dataframe-engine/
 │   └── demo.png                # Screenshot(s)
 ├── scripts/
 │   ├── app.py                  # Streamlit interactive dashboard
-│   ├── Simon_Hong_Project.py   # Core DataFrame engine (backend)
+│   ├── custom_engine.py   # Core DataFrame engine (backend)
 │   └── demo.py                 # Usage examples
 ├── requirements.txt            # Dependencies
 └── README.md                   # Project documentation

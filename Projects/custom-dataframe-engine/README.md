@@ -3,15 +3,20 @@
 **Author:** Simon Hong
 
 ## File Structure
-/custom-dataframe-engine
-├── app.py                  # Streamlit Interactive Dashboard (Frontend)
-├── custom_engine.py   # Core DataFrame Engine (Backend)
-├── List of Orders.csv      # Sample Data
-├── Order Details.csv       # Sample Data
-├── Sales target.csv        # Sample Data
-├── requirements.txt        # Dependencies
-├── demo.py                 # Usage examples script
-└── README.md               # Documentation
+```text
+custom-dataframe-engine/
+├── data/
+│   ├── List of Orders.csv      # Sample dataset 1
+│   ├── Order Details.csv       # Sample dataset 2
+│   └── Sales target.csv        # Sample dataset 3
+├── docs/
+│   └── demo.png                # Screenshot(s)
+├── scripts/
+│   ├── app.py                  # Streamlit interactive dashboard
+│   ├── Simon_Hong_Project.py   # Core DataFrame engine (backend)
+│   └── demo.py                 # Usage examples
+├── requirements.txt            # Dependencies
+└── README.md                   # Project documentation
 
 
 ## Project Overview

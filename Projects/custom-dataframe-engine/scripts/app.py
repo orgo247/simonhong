@@ -1,7 +1,7 @@
 import streamlit as st, sys, io, textwrap
-from Simon_Hong_Project import DataFrame
+from custom_engine import DataFrame
 
-st.set_page_config(page_title="DSCI551 - Data2app", layout="wide")
+st.set_page_config(page_title="custom-engine", layout="wide")
 
 if "ns" not in st.session_state:
     st.session_state.ns = {"DataFrame": DataFrame, "len": len}
@@ -63,7 +63,7 @@ if st.sidebar.button("Clear session"):
     }]
     st.rerun()
 
-st.title("DSCI551 - Data2app")
+st.title("custom-engine")
 
 for i, cell in enumerate(cells):
     with st.container(border=True):

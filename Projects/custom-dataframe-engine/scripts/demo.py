@@ -3,9 +3,9 @@
 # Usage: python demo.py
 
 try:
-    from custom_engine import DataFrame
+    from scripts.custom_engine import DataFrame
 except ImportError:
-    from custom_engine import DataFrame
+    from scripts.custom_engine import DataFrame
 
 print("=======================================================")
 print("   CUSTOM DATAFRAME ENGINE - FUNCTIONALITY DEMO")
@@ -13,8 +13,8 @@ print("=======================================================\n")
 
 # 1. Loading Data
 print("--- 1. LOADING DATA ---")
-orders = DataFrame("List of Orders.csv")
-details = DataFrame("Order Details.csv")
+orders = DataFrame("data/List of Orders.csv")
+details = DataFrame("data/Order Details.csv")
 print(f"✓ Orders Loaded: {len(orders)} rows")
 print(f"✓ Details Loaded: {len(details)} rows")
 

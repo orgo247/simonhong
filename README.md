@@ -1,6 +1,6 @@
 # Simon Hong
 
-Economics & Data Science | 🎓 MS Applied Data Science @USC
+MS Applied Data Science @USC
 
 ## About Me
 I’m a data enthusiast passionate about using data science to solve real-world problems. My background blends economics, statistics, and data science.

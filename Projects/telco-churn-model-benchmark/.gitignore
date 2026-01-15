@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Data (keep only small samples)
+data/raw/
+
+# Model artifacts / outputs
+models/
+outputs/
+*.h5
+*.keras
+
+# Jupyter
+.ipynb_checkpoints/
